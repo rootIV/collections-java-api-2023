@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarrinhoDeCompras {
-    private List<Item> itemList;
+    private final List<Item> itemList;
 
     public CarrinhoDeCompras() {
         this.itemList = new ArrayList<>();
@@ -50,9 +50,6 @@ public class CarrinhoDeCompras {
 
     public void exibirItens(){
         if(!itemList.isEmpty()){
-            //for (Item t : itemList) {
-            //System.out.println(t.getNome() + ": R$" + t.getPreco() + " (" + t.getQuantidade() + ").");
-            //}
             System.out.println(this.itemList);
             System.out.println("Valor total: " + calcularValorTotal());
         }
@@ -81,8 +78,5 @@ public class CarrinhoDeCompras {
         cc2.RemoverItem("Gelatina");
 
         cc2.exibirItens();
-
-        System.out.println(cc.toString());
-        System.out.println(cc2.toString());
     }
 }

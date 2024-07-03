@@ -15,24 +15,24 @@ public class Item {
         return nome;
     }
 
-    public int getQuantidade() {
-        return quantidade;
-    }
-
     public Double getPreco() {
         return preco;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public void setNome(int quantidade) {
-        this.quantidade = quantidade;
-    }
-
     public void setPreco(Double preco) {
         this.preco = preco;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     @Override
