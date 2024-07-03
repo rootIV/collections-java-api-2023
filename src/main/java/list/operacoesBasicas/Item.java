@@ -1,18 +1,18 @@
 package main.java.list.operacoesBasicas;
 
 public class Item {
-    private String descricao;
+    private String nome;
     private Double preco;
     private int quantidade;
 
     public Item(String descricao, Double preco, int quantidade) {
-        this.descricao = descricao;
+        this.nome = descricao;
         this.preco = preco;
         this.quantidade = quantidade;
     }
 
     public String getNome() {
-        return descricao;
+        return nome;
     }
 
     public int getQuantidade() {
@@ -23,8 +23,8 @@ public class Item {
         return preco;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public void setNome(int quantidade) {
@@ -33,5 +33,14 @@ public class Item {
 
     public void setPreco(Double preco) {
         this.preco = preco;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "nome='" + nome + '\'' +
+                ", preco=" + preco +
+                ", quantidade=" + quantidade +
+                '}';
     }
 }

@@ -18,35 +18,49 @@ public class CarrinhoDeCompras {
 
     public void RemoverItem(String nome){
         List<Item> itensParaRemover = new ArrayList<>();
-        for(Item t : itemList){
-            if(t.getNome().equalsIgnoreCase(nome)){
-                itensParaRemover.add(t);
+        if(!itemList.isEmpty()){
+            for(Item t : itemList){
+                if(t.getNome().equalsIgnoreCase(nome)){
+                    itensParaRemover.add(t);
+                }
             }
+        }
+        else{
+            System.out.println("Lista vazia!/Não há itens para remover./Não encontrado!");
         }
 
         itemList.removeAll(itensParaRemover);
     }
 
     public double calcularValorTotal(){
-        double valorTotal = 0;
+        double valorTotal = 0d;
 
-        for(Item t : itemList){
-            if(t.getQuantidade() > 1){
-                valorTotal += t.getPreco() * t.getQuantidade();
-            }else{
-                valorTotal += t.getPreco();
+        if(!itemList.isEmpty()) {
+            for (Item t : itemList) {
+                double quantidadeValor = t.getQuantidade() * t.getPreco();
+                valorTotal += quantidadeValor;
             }
-        }
 
-        return valorTotal;
+            return valorTotal;
+        }
+        else {
+            throw new RuntimeException("Lista vazia!/Não há itens para calcular./Não encontrado!");
+        }
     }
 
     public void exibirItens(){
-        for(Item t : itemList){
-            System.out.println(t.getNome() + ": R$" + t.getPreco() + " (" + t.getQuantidade() + ").");
+        if(!itemList.isEmpty()){
+            //for (Item t : itemList) {
+            //System.out.println(t.getNome() + ": R$" + t.getPreco() + " (" + t.getQuantidade() + ").");
+            //}
+            System.out.println(this.itemList);
+            System.out.println("Valor total: " + calcularValorTotal());
         }
+    }
 
-        System.out.println("Valor total: " + calcularValorTotal());
+    @Override
+    public String toString() {
+        return String.format("itemList toString() padrão: %s", itemList);
     }
 
     public static void main(String[] args) {
@@ -55,9 +69,20 @@ public class CarrinhoDeCompras {
         cc.AdicionarItem("Coxinha", 6.12, 2);
         cc.AdicionarItem("Suco", 5.65, 1);
         cc.AdicionarItem("Pringles", 12.99, 1);
-
         cc.RemoverItem("Pão");
 
         cc.exibirItens();
+
+        CarrinhoDeCompras cc2 = new CarrinhoDeCompras();
+        cc2.AdicionarItem("Bolo", 14.85, 2);
+        cc2.AdicionarItem("Doritos", 8.12, 2);
+        cc2.AdicionarItem("Refrigerante", 11.65, 1);
+        cc2.AdicionarItem("Gelatina", 4.99, 1);
+        cc2.RemoverItem("Gelatina");
+
+        cc2.exibirItens();
+
+        System.out.println(cc.toString());
+        System.out.println(cc2.toString());
     }
 }
