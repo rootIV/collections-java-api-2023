@@ -25,8 +25,7 @@ public class ConjuntoPalavrasUnicas {
     }
 
     public void exibirPalavrasUnicas(){
-        String message = !palavrasUnicas.isEmpty() ? palavrasUnicas.toString() : "Set vazio!";
-        System.out.println(message);
+        System.out.println(!palavrasUnicas.isEmpty() ? palavrasUnicas.toString() : "Set vazio!");
     }
 
     public static void main(String[] args) {
